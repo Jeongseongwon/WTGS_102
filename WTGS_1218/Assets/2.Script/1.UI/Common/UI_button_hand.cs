@@ -6,12 +6,7 @@ using UnityEngine.EventSystems;
 public class UI_button_hand : MonoBehaviour, IPointerClickHandler, IPointerExitHandler, IPointerEnterHandler
 {
    
-    // 0 : Arrow
-    // 1 : Hand
-    //
-    //
-    //
-    //
+    //0110 audio¶û ±â´É ÇÕÄ§
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -28,15 +23,5 @@ public class UI_button_hand : MonoBehaviour, IPointerClickHandler, IPointerExitH
         Cursor.SetCursor(Manager_image.instance.Get_arrow_image(), Vector2.zero, CursorMode.ForceSoftware);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    //Update is called once per frame
-    //void Update()
-    //{
-
-    //}
+   
 }
