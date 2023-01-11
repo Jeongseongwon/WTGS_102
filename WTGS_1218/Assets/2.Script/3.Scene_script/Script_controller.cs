@@ -10,7 +10,7 @@ public class Script_controller : MonoBehaviour
     public string Scene_number; //해단 씬 스크립트 파일 불러오기 예)1_2
 
     public Text text;           //스크립트 나타는 박스
-    //public GameObject TextPanel;  //애니메이션 용, 추가 필요 
+    public GameObject TextPanel;  //애니메이션 용, 추가 필요 
 
     public bool FadeOut = false;
     GameObject Fader;
@@ -85,11 +85,11 @@ public class Script_controller : MonoBehaviour
         ScriptCount();
         this.GetComponent<Narration_controller>().EffectReset();    //next button 이펙트 추가용
         
-        //if (TextPanel != null)
-        ////next, prev ������ �� �ִϸ��̼� ��� �Ǵ� �κ�
-        //{
-        //    TextPanel.GetComponent<Scriptopen>().OpenPanel();
-        //}
+        if (TextPanel != null)
+        //next, prev ������ �� �ִϸ��̼� ��� �Ǵ� �κ�
+        {
+            TextPanel.GetComponent<Scriptopen>().OpenPanel();
+        }
     }
     public void PrevBtn()
     {
@@ -100,10 +100,10 @@ public class Script_controller : MonoBehaviour
         }
         btnCount--;
         ScriptCount();
-        //if (TextPanel != null)
-        //{
-        //    TextPanel.GetComponent<Scriptopen>().OpenPanel();
-        //}
+        if (TextPanel != null)
+        {
+            TextPanel.GetComponent<Scriptopen>().OpenPanel();
+        }
     }
     public void ScriptCount()
     {
