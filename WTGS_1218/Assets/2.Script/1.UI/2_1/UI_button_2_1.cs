@@ -10,7 +10,8 @@ public class UI_button_2_1 : MonoBehaviour, IPointerClickHandler
     private GameObject SceneController;
     public void OnPointerClick(PointerEventData eventData)
     {
-        //각 기능 별로 추가하기
+        //2_1에서 쓰는 버튼용 공용 스크립트
+        //제어 +-, 시작, 정비 버튼용
 
         Debug.Log(this.gameObject.name);
         if (Object_name == "Button_+")

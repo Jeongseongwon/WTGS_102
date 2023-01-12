@@ -12,6 +12,7 @@ public class Scene_2_1_controller : MonoBehaviour
     public GameObject Study_title_Intro_2;
 
     //2-1 Gameobject
+    [Header("===== Gameobject =====")]
     public GameObject Wind_particle;
     public GameObject Blade_1;
     public GameObject Blade_2;
@@ -20,7 +21,19 @@ public class Scene_2_1_controller : MonoBehaviour
     public GameObject Camera;
     public GameObject Subcamera;
 
-    //Text
+    //2-1 panel
+    [Header("===== Panel obejct =====")]
+    public GameObject Green_button_1;
+    public GameObject Green_button_2;
+    public GameObject red_button_1;
+    public GameObject red_button_2;
+    public GameObject Emergency;
+    public GameObject Alert_message_caution;
+    public GameObject Alert_message_danger;
+
+
+    //2-1 Text
+    [Header("===== Text =====")]
     public GameObject Angle_pitch_target;
     public GameObject Angle_pitch;
     public GameObject Velocity_wind;
@@ -37,10 +50,10 @@ public class Scene_2_1_controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Value_Angle_pitch=100;
-        Value_Angle_pitch_target= 100; 
-        Value_Velocity_wind= 100;
-        Value_Power= 100;
+        Value_Angle_pitch = 100;
+        Value_Angle_pitch_target = 100;
+        Value_Velocity_wind = 100;
+        Value_Power = 100;
         //PC_Image_Array = PC_Image.gameObject.GetComponentsInChildren<Transform>();
         // PC_Image_Array = GameObject.FindGameObjectsWithTag("PC_Sprite");
         //PC_Image.SetActive(false);
@@ -50,7 +63,7 @@ public class Scene_2_1_controller : MonoBehaviour
     }
     private void Startact() //중간 평가용으로 수정
     {
-        Study_title_Intro_2.SetActive(true); 
+        Study_title_Intro_2.SetActive(true);
         Study_title_Intro_2.GetComponent<Animation>().Play("Intro_2_animation(on)");
         Scriptbox.GetComponent<Animation>().Play("bannerup(1220)");
         Top_navigation.GetComponent<Animation>().Play("TN_intro_down");
@@ -75,20 +88,20 @@ public class Scene_2_1_controller : MonoBehaviour
 
         if (PostCount != BtnCount)
         {
-            
+
             PC_Image_Array[PostCount].gameObject.SetActive(false);
             flag = true;
             Debug.Log("TRUE");
         }
-            //for (int i = 0; i < PC_Image_Array.Length; i++)
-//{
-            //}
+        //for (int i = 0; i < PC_Image_Array.Length; i++)
+        //{
+        //}
         if (flag == true)
         {
             if (BtnCount == 0)
             {
-                
-              
+
+
             }
             if (BtnCount == 1)
             {
@@ -102,15 +115,71 @@ public class Scene_2_1_controller : MonoBehaviour
                 WTGS_Panel.SetActive(true);
                 Debug.Log("check_2");
             }
+            else if (BtnCount == 7)
+            {
+
+               
+                Emergency.SetActive(true);
+            }
+            else if (BtnCount == 8)
+            {
+                Green_button_1.SetActive(false);
+                Green_button_2.SetActive(false);
+                red_button_1.SetActive(true);
+                red_button_2.SetActive(true);
+                StartCoroutine(Alert_value());
+                Value_Angle_pitch_target = 45;  //그 근처 값으로 바뀌게끔 만들어야할듯
+                Value_Angle_pitch = 20;  //그 근처 값으로 바뀌게끔 만들어야할듯
+            }
+            else if (BtnCount == 10)
+            {
+                StartCoroutine(Alert_value());
+                Value_Angle_pitch_target = 90;
+                Value_Angle_pitch_target = 60;
+            }
+
+            else if (BtnCount == 12)
+            {
+                StartCoroutine(Alert_value());
+                Value_Angle_pitch_target = 30;
+                Value_Angle_pitch_target = 35;
+            }
             PC_Image_Array[BtnCount].SetActive(true);
             PostCount = BtnCount;
             flag = false;
             Debug.Log("FALSE");
         }
-       
+
         //데이터 전용 타이머?
     }
 
+    IEnumerator  Alert_value()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1.0f);
+            //5초 정도 시간이 지나고 나면, 타이머 설정, 타이머 리셋
+            if (Value_Angle_pitch_target - Value_Angle_pitch > 20)
+            {
+                //주의 메시지 활성화
+                Alert_message_caution.SetActive(true);
+                Alert_message_danger.SetActive(false);
+            }
+            else if (Value_Angle_pitch_target - Value_Angle_pitch > 10)
+            {
+                //주의 메시지 활성화
+                Alert_message_caution.SetActive(false);
+                Alert_message_danger.SetActive(true);
+            }
+            else if (Value_Angle_pitch_target - Value_Angle_pitch <= 3 && Value_Angle_pitch_target - Value_Angle_pitch <= -3)
+            {
+                gameObject.GetComponent<Script_controller>().NextBtn();
+                Alert_message_caution.SetActive(false);
+                Alert_message_danger.SetActive(false);
+                yield break;
+            }
+        }
+    }
     public void Rotate_blade_up()
     {
         Blade_1.GetComponent<Transform>().Rotate(new Vector3(0, 10, 0));
@@ -123,21 +192,21 @@ public class Scene_2_1_controller : MonoBehaviour
         Blade_2.GetComponent<Transform>().Rotate(new Vector3(0, -10, 0));
         Blade_3.GetComponent<Transform>().Rotate(new Vector3(0, -10, 0));
     }
-    public void Refresh_text_value()
+    private void Refresh_text_value()
     {
-        Angle_pitch_target.GetComponent<Text>().text= Value_Angle_pitch_target.ToString();
+        Angle_pitch_target.GetComponent<Text>().text = Value_Angle_pitch_target.ToString();
         Angle_pitch.GetComponent<Text>().text = Value_Angle_pitch.ToString();
         Velocity_wind.GetComponent<Text>().text = Value_Velocity_wind.ToString();
         Power.GetComponent<Text>().text = Value_Power.ToString();
     }
     public void Set_add_pitch()
     {
-        Value_Angle_pitch++;
+        Value_Angle_pitch+=5;
     }
 
     public void Set_reduce_pitch()
     {
-        Value_Angle_pitch--;
+        Value_Angle_pitch-=5;
     }
 
     public void Stop()

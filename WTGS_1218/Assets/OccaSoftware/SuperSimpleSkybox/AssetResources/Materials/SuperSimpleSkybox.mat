@@ -192,8 +192,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GroundEnabled: 0
-    - _GroundFadeAmount: 0.02
+    - _GroundEnabled: 1
+    - _GroundFadeAmount: 0.123
     - _Ground_Fade: -0.01
     - _HorizonSaturationAmount: 0.265
     - _HorizonSaturationFalloff: 3.17
