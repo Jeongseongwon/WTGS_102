@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/8. Assets(WTGobject)/wind energy control center/wind_center.unity
+- path: Assets/1.Scene(test)/3_2(0109).unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
