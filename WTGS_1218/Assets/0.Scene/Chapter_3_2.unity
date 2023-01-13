@@ -1938,8 +1938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 205874378}
-  nextboard: {fileID: 1115739964}
 --- !u!114 &205874381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5301,8 +5299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 670614903}
-  nextboard: {fileID: 57620221571320141}
 --- !u!114 &591821631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6759,8 +6755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 5120856670337552001}
-  nextboard: {fileID: 8727378591848504159}
 --- !u!114 &807503157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11909,8 +11903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 992458176}
-  nextboard: {fileID: 4446126209725947199}
 --- !u!114 &1500013252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13183,7 +13175,6 @@ MonoBehaviour:
   btnCount: 0
   Scene_number: 3_2
   text: {fileID: 3570069657516633921}
-  TextPanel: {fileID: 0}
   FadeOut: 0
   textList:
   - "\uB2E4\uC74C\uC740 \uD48D\uB825\uBC1C\uC804\uAE30 \uC0C1\uD0DC \uAC10\uC2DC
@@ -18647,8 +18638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 879685691}
-  nextboard: {fileID: 8727378591848504159}
 --- !u!114 &2127211045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24708,8 +24697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 4669554961827222960}
-  nextboard: {fileID: 6295338799371276838}
 --- !u!224 &1829537766926681155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27670,8 +27657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 5120856670337552001}
-  nextboard: {fileID: 8727378591848504159}
 --- !u!114 &2996452929474103162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30424,7 +30409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0d97834b71bd1429b8b9d2361f4738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardscript: {fileID: 3570069658509962044}
 --- !u!224 &3570069656600751370
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48704,8 +48688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 4446126209725947199}
-  nextboard: {fileID: 4298985747194169989}
 --- !u!1 &4198243826268328570
 GameObject:
   m_ObjectHideFlags: 0
@@ -49329,8 +49311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 8727378591848504159}
-  nextboard: {fileID: 4446126209725947199}
 --- !u!114 &4399817717137484028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54413,8 +54393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652dd47863f00ac4395ca749bdf8a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowboard: {fileID: 4298985747194169989}
-  nextboard: {fileID: 57620221571320141}
 --- !u!224 &6247555335880890542
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56790,10 +56768,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.9176471, g: 0.3803922, b: 0.9921569, a: 1}
-    m_HighlightedColor: {r: 0.80392164, g: 0.4901961, b: 0.8196079, a: 1}
-    m_PressedColor: {r: 0.6392157, g: 0.39607847, b: 0.6509804, a: 1}
-    m_SelectedColor: {r: 0.9803922, g: 0.68235296, b: 1, a: 1}
+    m_NormalColor: {r: 0.3803922, g: 0.8337105, b: 0.99215686, a: 1}
+    m_HighlightedColor: {r: 0.49019608, g: 0.79358935, b: 0.81960785, a: 1}
+    m_PressedColor: {r: 0.39607844, g: 0.58605856, b: 0.6509804, a: 1}
+    m_SelectedColor: {r: 0.68235296, g: 0.9101792, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -56809,7 +56787,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2597015667697480500}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -57951,14 +57929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cb79c21582e4647a2995a711c831be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board:
-  - {fileID: 5120856670337552001}
-  - {fileID: 8727378591848504159}
-  - {fileID: 4446126209725947199}
-  - {fileID: 4298985747194169989}
-  - {fileID: 57620221571320141}
-  - {fileID: 2023940015846014064}
-  - {fileID: 7695532373988380891}
 --- !u!1 &7590096863170769242
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,18 +23,16 @@ public class UI_button_2_1 : MonoBehaviour, IPointerClickHandler
         }
         else if (Object_name == "Button_-")
         {
-            //-의 경우 애니메이션, 값 내리기
             SceneController.GetComponent<Scene_2_1_controller>().Set_reduce_pitch();
             SceneController.GetComponent<Scene_2_1_controller>().Rotate_blade_down();
         }
         else if (Object_name == "Button_Stop")
         {
-            //비상정지의 경우 브레이크 등 점멸, 애니메이션 정지, 바람 효과 유지, 
             SceneController.GetComponent<Scene_2_1_controller>().Stop();
         }
         else if (Object_name == "Button_Start")
         {
-            //START의 경우 풍력발전기 애니메이션, 바람 효과, 다른 그래프들 데이터 화면 투사
+            SceneController.GetComponent<Script_controller>().NextBtn();
         }
         //else if (Object_name == "Button_+")
         //{
