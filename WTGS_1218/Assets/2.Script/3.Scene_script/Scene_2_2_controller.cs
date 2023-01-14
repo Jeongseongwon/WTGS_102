@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,8 +36,8 @@ public class Scene_2_2_controller : MonoBehaviour
 
     //2-1 Text
     [Header("===== Text =====")]
-    public GameObject Angle_pitch_target;
-    public GameObject Angle_pitch;
+    public GameObject Angle_yaw_target;
+    public GameObject Angle_yaw;
     public GameObject Velocity_wind;
     public GameObject Power;
 
@@ -105,43 +104,38 @@ public class Scene_2_2_controller : MonoBehaviour
             }
             else if (BtnCount == 2)
             {
-                //카메라 움직이는거, 옆에 패널 애니메이션 추가
                 Camera.GetComponent<Animation>().Play("Camera_move(intro,2_1)");
                 Subcamera.SetActive(true);
                 WTGS_Panel.SetActive(true);
                 Debug.Log("check_2");
                 StartCoroutine(Refresh_text_value());
             }
-            else if (BtnCount == 8)
+            else if (BtnCount == 7)
             {
                 Emergency.SetActive(true);
-                Change_graph_number(Data_velocity, 3);
+                START();
+                Change_graph_number(Data_velocity, 12);
 
             }
-            else if (BtnCount == 9)
+            else if (BtnCount == 8)
             {
                 Green_button_1.SetActive(false);
                 Green_button_2.SetActive(false);
                 red_button_1.SetActive(true);
                 red_button_2.SetActive(true);
                 StartCoroutine(Alert_value());  //목표 피치값 변경
-                Change_graph_number(Data_power, 100);
-                //타겟 : 0 /현재 : 30
+                Change_graph_number(Data_power, 1000);
+                Change_value(30);
 
             }
             else if (BtnCount == 10)
             {
-                START();
-                StartCoroutine(Alert_value());  //목표 피치값 변경
-                                                //풍속 값 변경 , 이 둘의 속도는 비슷하게 제어가 되는 걸로
-                Change_value(45);
-                Change_graph_number(Data_velocity, 12);
+
             }
             else if (BtnCount == 11)
             {
                 //Change_graph_number(Data_power, 100);//데이터 파워는 피치각 조절함에 따라 지속적으로 변경이 필요함
 
-                Change_graph_number(Data_velocity, 25);
             }
             else if (BtnCount == 12)
             {
@@ -234,8 +228,8 @@ public class Scene_2_2_controller : MonoBehaviour
     {
         while (true)
         {
-            Angle_pitch_target.GetComponent<Text>().text = Value_Angle_pitch_target.ToString("F1");
-            Angle_pitch.GetComponent<Text>().text = Value_Angle_pitch.ToString("F1");
+            Angle_yaw_target.GetComponent<Text>().text = Value_Angle_pitch_target.ToString("F1");
+            Angle_yaw.GetComponent<Text>().text = Value_Angle_pitch.ToString("F1");
             //Velocity_wind.GetComponent<Text>().text = Value_Velocity_wind.ToString("F1");
             //Power.GetComponent<Text>().text = Value_Power.ToString("F1");
             yield return new WaitForSeconds(0.3f);
