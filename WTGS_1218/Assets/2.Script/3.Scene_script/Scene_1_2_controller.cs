@@ -43,17 +43,18 @@ public class Scene_1_2_controller : MonoBehaviour
         Anim = Main_object.GetComponent<Animation>();
         
         Camera.GetComponent<Camera_movement>().enabled = false;
-        Invoke("StartAct", 3f);
+        StartCoroutine(Startact());
         Object_Col_Off();
     }
-    void StartAct()
+    IEnumerator Startact() //중간 평가용으로 수정
     {
-        //하단 스크립트, 인트로 2 애니메이션
+        yield return new WaitForSeconds(3.0f);
         Study_title.SetActive(true);
         Scriptbox.GetComponent<Animation>().Play("bannerup(1220)");
         Top_navigation.GetComponent<Animation>().Play("TN_intro_down");
+        yield break;
     }
-   
+
     void Act1()
     {
         if (Prev_Status == true)
@@ -87,9 +88,6 @@ public class Scene_1_2_controller : MonoBehaviour
 
         //this.GetComponent<NarrationController>().Audio.clip = this.GetComponent<NarrationController>().AudioFiles[1];
 
-        //Camera.GetComponent<Camera_movement>().act1();
-
-        //바람 효과 제거 하고 풍력발전기 정지, 그리고 블레이드만 앞으로 살짝 O
         Object_Col_Off();
         Object_1_blade1.GetComponent<MeshCollider>().enabled = true;
         Object_2_blade2.GetComponent<MeshCollider>().enabled = true;
@@ -158,6 +156,27 @@ public class Scene_1_2_controller : MonoBehaviour
         Anim.Play("7_WTG_Nacelle_rotation");
         Debug.Log("act8");
     }
+    void Act9()
+    {
+       
+    }
+    void Act11()
+    {
+
+    }
+    void Act13()
+    {
+
+    }
+    void Act14()
+    {
+
+    }
+    void Act15()
+    {
+
+
+    }
 
     //애니메이션 재생하면서 오브젝트 물리엔진 일시정지 및 활성화
     //void KineticDisable()
@@ -181,53 +200,65 @@ public class Scene_1_2_controller : MonoBehaviour
     void Update()
     {
         BtnCountToggle();
-        if (gameObject.GetComponent<Script_controller>().btnCount == 0 && toggle)
+        if (toggle)
         {
-            
-            toggle = false;
-        }
-        if (gameObject.GetComponent<Script_controller>().btnCount == 1 && toggle)
-        {
-            Act1();
-            toggle = false;
-        }
-        if (gameObject.GetComponent<Script_controller>().btnCount == 2 && toggle)
-        {
-            Act2();
-            toggle = false;
-        }
-        if (gameObject.GetComponent<Script_controller>().btnCount == 3 && toggle)
-        {
-            Act3();
-            toggle = false;
-        }
-        if (gameObject.GetComponent<Script_controller>().btnCount == 4 && toggle)
-        {
-            Act4();
-            toggle = false;
-        }
-        if (gameObject.GetComponent<Script_controller>().btnCount == 5 && toggle)
-        {
-            Act5();
-            toggle = false;
-        }
-        if (gameObject.GetComponent<Script_controller>().btnCount == 6 && toggle)
-        {
-            Act6();
-            toggle = false;
-        }
-        if (gameObject.GetComponent<Script_controller>().btnCount == 7 && toggle)
-        {
-            Act7();
-            toggle = false;
-        }
-        if (gameObject.GetComponent<Script_controller>().btnCount == 8 && toggle)
-        {
-            Act8();
             toggle = false;
         }
     }
 
+    void Call_act(int btncount)
+    {
+        if(btncount == 0)
+        {
+            
+        }
+        else if(btncount == 1)
+        {
+            Act1();
+        }
+        else if (btncount == 2)
+        {
+            Act2();
+        }
+        else if (btncount == 3)
+        {
+            Act3();
+        }
+        else if (btncount == 4)
+        {
+            Act4();
+        }
+        else if (btncount == 5)
+        {
+            Act5();
+        }
+        else if (btncount == 6)
+        {
+            Act6();
+        }
+        else if (btncount == 7)
+        {
+            Act7();
+        }
+        else if (btncount == 8)
+        {
+            Act8();
+        }
+        else if (btncount == 9)
+        {
+            //Act9();
+        }
+        else if (btncount == 10)
+        {
+            //Act10();
+        }
+        else if (btncount == 11)
+        {
+            //Act11();
+        }
+        
+
+    }
     void BtnCountToggle()
     {
         nowCount = gameObject.GetComponent<Script_controller>().btnCount;
@@ -261,8 +292,5 @@ public class Scene_1_2_controller : MonoBehaviour
         Object_14_Generator.GetComponent<MeshCollider>().enabled = false;
     }
 
-    private void Anim_act1()
-    {
 
-    }
 }

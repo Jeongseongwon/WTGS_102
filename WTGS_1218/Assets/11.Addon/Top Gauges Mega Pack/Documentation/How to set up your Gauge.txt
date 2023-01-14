@@ -1,0 +1,77 @@
+
+
+<< ====  TOP GAUGES MEGA PACK INSTRUCTIONS ==== >>
+<< ============================================ >>
+
+
+<< ==== How to set up your Gauge ==== >>
+
+On TOP GAUGES MEGA PACK folder you will find: 
+
+1. Documentation: You will find this file.
+2. Material: All materials used on prefabs
+3. Meshes: All meshes to start to create your gauge, basically they are divided by: 
+
+a) Gauge-BG: Rounded, you can scale the height as you need.
+b) Gauge-Cover: Top design, go over the gauge material, diferent models available. (Some has bevel borders and others just flat)
+c) Gauge-Glass: Flat and Rounded.
+d) Gauge-Material: Gauge designs, there are 2 models available, entire flat and Disc (with has a hole in the middle).
+e) Gauge-Neon: Go along the Gauge-BG to accept emission materials.
+f) Gauge-Pin: Variety of Pins to bring details
+g) Gauge-Pointer: Variety of Pointers models. Scale it as you need.
+
+TIP: All meshes has the same positions, just drag them all to the editor (reset all positions to 0,0,0) and start to adjust as you wish.
+ 
+4. PostProcessing: Just to bring some effects to neon materials
+5. Prefabs: 15 Prefabs to check how we build and start from them + 4 Compass prefabs as bonus
+6. Scenes: There are 4 scenes in the pack:
+
+a) Gauges: See all mesh models available
+b) Demo: See how a prefab looks.
+c) Dirty Glasss: See how a prefab looks using Dirty Glass material.
+d) All Prefabs: Check them all at once.
+
+LOD: To get most performance, there is 1 Prefab (LOD-LowPoly-Gauge) which is Low Poly to be used for far distances. 
+     Duplicate and Rename this mesh as you need.
+     PSD available in the folder (Zip Files > Gauges PSD) to easy create your materials for LODs.
+
+7. Shaders: Simple shaders for the Gauge-BG (both sides) and Glasses.
+8. Textures: Textures to be used in the materials.
+9. Textures > PSD Files (151Mb): You will find:
+
+a) Gauges PSD: PSD Mockup for Guages and Gauges Low Poly sample.
+a) Compass PSD: PSD Mockup for Compass.
+b) Low-Poly-Gauge: Quixel project for low poly samples.
+
+10. TopGearsMegaPackSample: A gear mesh to be used with Gauge-Material-Disc, cortesy of Top Gears Mega Pack 125+. (Also available on Marketplace)
+
+See Demo scenes to have a better idea.
+
+Tips: Mount the Gauge on a flat surface, use the same location 0,0,0 for all meshes till finish your gauge.
+
+Note: In order to all effects and neon light work properly in your project you have to download and enable Post Processing on your camera.
+
+
+
+<< ==== How to create a new Low Poly Gauge Material ==== >>
+
+1. Open the file (Gauges-LowPoly-Albedo.psd) located in the folder (Zip Files > Gauges PSD)
+2. There are 2 smart objects layers, Pointers and Gauge. Double Click on them to open the .psb with all layers, select one of the prefabs layers or create a new one and save.
+
+Tip: Try to not change the masks (from Quixel project) and keep all the layers as smart object (do not RASTERIZE the layers) and export the new Gauge.
+
+<< ==== Demo Levels Post Effects ==== >>
+
+Download Post Processing Stack Free here: https://assetstore.unity.com/packages/essentials/post-processing-stack-83912 
+Start with the Sample file (Gauges) located in the PostProcessing folder.
+
+
+<< ==== Support ==== >>
+
+Support in English, Spanish and Portuguese.
+
+Any suggestion please contact me on email: megapackassets@gmail.com
+
+Discord Chat: https://discord.gg/FyjYgj
+
+Regards and good work!
