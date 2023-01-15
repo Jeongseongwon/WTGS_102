@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using HighlightPlus;
 
 public class Scene_1_2_controller : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Scene_1_2_controller : MonoBehaviour
     public GameObject Top_navigation;
     public GameObject Wind_particle;
     public GameObject Study_title;
-   
+
     private Text text;
     bool toggle = true;
     int nowCount;
@@ -41,10 +42,10 @@ public class Scene_1_2_controller : MonoBehaviour
     void Start()
     {
         Anim = Main_object.GetComponent<Animation>();
-        
+
         Camera.GetComponent<Camera_movement>().enabled = false;
         StartCoroutine(Startact());
-        Object_Col_Off();
+        Object_Col_Off_ALL();
     }
     IEnumerator Startact() //중간 평가용으로 수정
     {
@@ -63,13 +64,14 @@ public class Scene_1_2_controller : MonoBehaviour
             //카메라, 발전기 위치 재설정
 
         }
-        Object_Col_Off();
-        Object_1_blade1.GetComponent<MeshCollider>().enabled = true;
-        Object_2_blade2.GetComponent<MeshCollider>().enabled = true;
-        Object_3_blade3.GetComponent<MeshCollider>().enabled = true;
-        Object_4_Nacelle.GetComponent<MeshCollider>().enabled = true;
-        Object_5_Tower.GetComponent<MeshCollider>().enabled = true;
-        Object_6_Rotor.GetComponent<MeshCollider>().enabled = true;
+        Object_Col_Off_ALL();
+        Object_Col_on(Object_1_blade1);
+        Object_Col_on(Object_2_blade2);
+        Object_Col_on(Object_3_blade3);
+        Object_Col_on(Object_4_Nacelle);
+        Object_Col_on(Object_5_Tower);
+        Object_Col_on(Object_6_Rotor);
+
         Camera.GetComponent<Camera_movement>().enabled = true;
         Study_title.GetComponent<Animation>().Play("Intro_2_animation(off)");
         Anim.Play("1_WTG_rotation");
@@ -88,49 +90,59 @@ public class Scene_1_2_controller : MonoBehaviour
 
         //this.GetComponent<NarrationController>().Audio.clip = this.GetComponent<NarrationController>().AudioFiles[1];
 
-        Object_Col_Off();
-        Object_1_blade1.GetComponent<MeshCollider>().enabled = true;
-        Object_2_blade2.GetComponent<MeshCollider>().enabled = true;
-        Object_3_blade3.GetComponent<MeshCollider>().enabled = true;
-        Wind_particle.SetActive(false);
-        Camera.GetComponent<Camera_movement>().act1();
-        Anim.Stop();
-        Anim.Play("3_WTG_blade_move");
+
         Debug.Log("act2");
     }
     void Act3()
     {
-        //블레이드, 바람 불고 다시 원위치, 회전
-        //Anim.Play("WTG_reset_rotation(3)");
-        Wind_particle.SetActive(true);
-        Object_6_Rotor.GetComponent<MeshCollider>().enabled = true;
-        Camera.GetComponent<Camera_movement>().act2();
-        Anim.Play("3_WTG_blade_move(return)");
+        StartCoroutine(Highlight_onoff(Object_1_blade1));
+        StartCoroutine(Highlight_onoff(Object_2_blade2));
+        StartCoroutine(Highlight_onoff(Object_3_blade3));
+
+        Object_Col_Off_ALL();
+
+        Object_Col_on(Object_1_blade1);
+        Object_Col_on(Object_2_blade2);
+        Object_Col_on(Object_3_blade3);
+        Wind_particle.SetActive(false);
+        Camera.GetComponent<Camera_movement>().act1();
+        Anim.Stop();
+        Anim.Play("3_WTG_blade_move");
         Debug.Log("act3");
 
     }
     void Act4()
     {
-        Object_Col_Off();
+        Object_Col_on(Object_6_Rotor);
+
+
+        Wind_particle.SetActive(true);
+        Camera.GetComponent<Camera_movement>().act2();
+        Anim.Play("3_WTG_blade_move(return)");
+        Debug.Log("act4");
+
+    }
+    void Act5()
+    {
+        Object_Col_Off_ALL();
         Object_6_Rotor.GetComponent<MeshCollider>().enabled = true;
         Object_8_Hub.GetComponent<MeshCollider>().enabled = true;
         Object_9_Pitch.GetComponent<MeshCollider>().enabled = true;
         Object_10_Spinner.GetComponent<MeshCollider>().enabled = true;
         Camera.GetComponent<Camera_movement>().act3();
         Anim.Play("4_WTG_rotor_move");
-        
-        Debug.Log("act4");
-    }
-    void Act5()
-    {
-        Object_Col_Off();
+
+        Debug.Log("act5");
+
+
+        Object_Col_Off_ALL();
         Object_8_Hub.GetComponent<MeshCollider>().enabled = true;
         Camera.GetComponent<Camera_movement>().act4();
         Debug.Log("act5");
     }
     void Act6()
     {
-        Object_Col_Off();
+        Object_Col_Off_ALL();
         Object_9_Pitch.GetComponent<MeshCollider>().enabled = true;
         Anim.Play("5_WTG_blade_pitch");
         Debug.Log("act6");
@@ -138,7 +150,7 @@ public class Scene_1_2_controller : MonoBehaviour
     void Act7()
     {
         //나셀 내부부품 툴팁 추가하기
-        Object_Col_Off();
+        Object_Col_Off_ALL();
         Object_11_Mainshaft.GetComponent<MeshCollider>().enabled = true;
         Object_12_Yaw.GetComponent<MeshCollider>().enabled = true;
         Object_13_Gearbox.GetComponent<MeshCollider>().enabled = true;
@@ -150,7 +162,7 @@ public class Scene_1_2_controller : MonoBehaviour
     void Act8()
     {
         //나셀 내부부품 툴팁 추가하기
-        Object_Col_Off();
+        Object_Col_Off_ALL();
         Object_12_Yaw.GetComponent<MeshCollider>().enabled = true;
         Camera.GetComponent<Camera_movement>().act6();
         Anim.Play("7_WTG_Nacelle_rotation");
@@ -158,7 +170,7 @@ public class Scene_1_2_controller : MonoBehaviour
     }
     void Act9()
     {
-       
+
     }
     void Act11()
     {
@@ -202,17 +214,18 @@ public class Scene_1_2_controller : MonoBehaviour
         BtnCountToggle();
         if (toggle)
         {
+            Call_act(nowCount);
             toggle = false;
         }
     }
 
     void Call_act(int btncount)
     {
-        if(btncount == 0)
+        if (btncount == 0)
         {
-            
+
         }
-        else if(btncount == 1)
+        else if (btncount == 1)
         {
             Act1();
         }
@@ -256,7 +269,7 @@ public class Scene_1_2_controller : MonoBehaviour
         {
             //Act11();
         }
-        
+
 
     }
     void BtnCountToggle()
@@ -274,7 +287,7 @@ public class Scene_1_2_controller : MonoBehaviour
         }
         postCount = nowCount;
     }
-    private void Object_Col_Off()
+    private void Object_Col_Off_ALL()
     {
         Object_1_blade1.GetComponent<MeshCollider>().enabled = false;
         Object_2_blade2.GetComponent<MeshCollider>().enabled = false;
@@ -292,5 +305,20 @@ public class Scene_1_2_controller : MonoBehaviour
         Object_14_Generator.GetComponent<MeshCollider>().enabled = false;
     }
 
+    //** 툴팁 키고 끄는 기능으로 사용
+    private void Object_Col_on(GameObject obj)
+    {
+        obj.GetComponent<MeshCollider>().enabled = true;
+    }
+
+    //** 하이라이트 시간 동안 키고 끄는 기능으로 사용
+
+    IEnumerator Highlight_onoff(GameObject obj) //중간 평가용으로 수정
+    {
+        obj.GetComponent<HighlightEffect>().highlighted = true;
+        yield return new WaitForSeconds(3.0f);
+        obj.GetComponent<HighlightEffect>().highlighted = false;
+        yield break;
+    }
 
 }

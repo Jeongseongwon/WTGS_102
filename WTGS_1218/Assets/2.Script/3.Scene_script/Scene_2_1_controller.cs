@@ -34,6 +34,9 @@ public class Scene_2_1_controller : MonoBehaviour
     public GameObject Graph_power;
     public GameObject Data_velocity;
     public GameObject Data_power;
+    public GameObject Gauge_pin;
+    //public GameObject Wind_direction_pin_target;
+    //public GameObject Wind_direction_pin;
 
 
     //2-1 Text
@@ -112,12 +115,15 @@ public class Scene_2_1_controller : MonoBehaviour
                 WTGS_Panel.SetActive(true);
                 Debug.Log("check_2");
                 StartCoroutine(Refresh_text_value());
+                StartCoroutine(Refresh_pin_value(Value_Power));
             }
             else if (BtnCount == 8)
             {
                 Emergency.SetActive(true);
-                Change_graph_number(Data_velocity, 3);
 
+                Wind_particle.SetActive(true);
+                Graph_velocity.SetActive(true);
+                Change_graph_number(Data_velocity, 3);
             }
             else if (BtnCount == 9)
             {
@@ -125,6 +131,8 @@ public class Scene_2_1_controller : MonoBehaviour
                 Green_button_2.SetActive(false);
                 red_button_1.SetActive(true);
                 red_button_2.SetActive(true);
+                Graph_power.SetActive(true);
+
                 StartCoroutine(Alert_value());  //목표 피치값 변경
                 Change_graph_number(Data_power, 100);
                 //타겟 : 0 /현재 : 30
@@ -132,7 +140,7 @@ public class Scene_2_1_controller : MonoBehaviour
             }
             else if (BtnCount == 10)
             {
-                START();
+                //START();
                 StartCoroutine(Alert_value());  //목표 피치값 변경
                                                 //풍속 값 변경 , 이 둘의 속도는 비슷하게 제어가 되는 걸로
                 Change_value(45);
@@ -243,27 +251,44 @@ public class Scene_2_1_controller : MonoBehaviour
             Angle_pitch.GetComponent<Text>().text = Value_Angle_pitch.ToString("F1");
             //Velocity_wind.GetComponent<Text>().text = Value_Velocity_wind.ToString("F1");
             //Power.GetComponent<Text>().text = Value_Power.ToString("F1");
+            
+            //생산전력량 실시간 변화기능 추가
+
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+    IEnumerator Refresh_pin_value(float value)
+    {
+        while (true)
+        {
+            //생산전력량 실시간 변화기능 추가
+            Gauge_pin.GetComponent<RectTransform>().localRotation = Quaternion.Euler(new Vector3(0, 0, 0 -100*(value/2100) ));
             yield return new WaitForSeconds(0.3f);
         }
     }
     public void Set_add_pitch()
     {
         Value_Angle_pitch += 5;
+        //+- 클릭할 때마다 그래프 값 변경
         if (BtnCount == 9)
         {
-            Change_graph_number(Data_power, ((30-Value_Angle_pitch) / 30) * 1000);
+            Value_Power = ((30 - Value_Angle_pitch) / 30) * 1000;
+            Change_graph_number(Data_power, Value_Power);
         }
         else if (BtnCount == 10)
         {
-            Change_graph_number(Data_power, 1000 + (Value_Angle_pitch / 45) * 1100);
+            Value_Power = 1000 + (Value_Angle_pitch / 45) * 1100;
+            Change_graph_number(Data_power, Value_Power);
         }
         else if (BtnCount == 12)
         {
-            Change_graph_number(Data_power, 2500 - ( (Value_Angle_pitch-45) / 45) * 400);
+            Value_Power = 2500 - ((Value_Angle_pitch - 45) / 45) * 400;
+            Change_graph_number(Data_power, Value_Power);
         }
         else if (BtnCount == 13)
         {
-            Change_graph_number(Data_power, 1800 + ( (90-Value_Angle_pitch) / 60) * 400);
+            Value_Power = 1800 + ((90 - Value_Angle_pitch) / 60) * 400;
+            Change_graph_number(Data_power, Value_Power);
         }
     }
 
