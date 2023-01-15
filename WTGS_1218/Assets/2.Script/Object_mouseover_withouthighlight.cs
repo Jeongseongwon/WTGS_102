@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using HighlightPlus;
 
 public class Object_mouseover_withouthighlight : MonoBehaviour
 {
@@ -18,14 +17,13 @@ public class Object_mouseover_withouthighlight : MonoBehaviour
         //Debug.Log(this.gameObject.name);
         Tooltip.transform.GetChild(0).gameObject.SetActive(true);
         Tooltip.GetComponent<Tooltip>().Change_text(Tooltip_text);
-        this.gameObject.GetComponent<HighlightEffect>().highlighted = true;
-            
+        this.gameObject.layer = 6;
     }
 
     private void OnMouseExit()
     {
         Tooltip.transform.GetChild(0).gameObject.SetActive(false);
         Tooltip.GetComponent<Tooltip>().Change_text(" ");
-        this.gameObject.GetComponent<HighlightEffect>().highlighted = false;
+        this.gameObject.layer = 7;
     }
 }
